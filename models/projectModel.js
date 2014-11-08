@@ -12,9 +12,11 @@ var projectSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    chapterId :[{type: Schemas.Types.ObjectId , ref : 'chapter'}]
+    chapterName :{
+        type:String
+    }
 });
 
-exports.chapterModel = function(){
-    return mongoose.model('chapter', chapterSchema);
+exports.projectModel = function(){
+    return mongoose.model('project', projectSchema);
 };

@@ -16,7 +16,9 @@ var chapterSchema = mongoose.Schema({
         type:String,
         required: true
     },
-    chapterHeadId :[{type: Schemas.Types.ObjectId , ref : 'user'}]
+    userName :{
+        type:String
+    }
 });
 
 exports.chapterModel = function(){
