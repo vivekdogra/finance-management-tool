@@ -16,7 +16,7 @@ var chapterSchema = mongoose.Schema({
         type:String,
         required: true
     },
-    userName :{
+    userId :{
         type:String
     }
 });
