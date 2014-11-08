@@ -38,7 +38,6 @@ var userModel = function () {
         },
         role: {
             type: String,
-            enum: ['Volunteer', 'Chapter', 'Center' ],
             default: 'Volunteer'
         }
     });
