@@ -70,7 +70,7 @@
                     <div class="col-md-8">
 
                         <div class='input-group date' id='datetimepicker5'>
-                            <input type='text' class="form-control" id="datepicker" placeholder="Select Purchase date"/>
+                            <input type='text' class="form-control" id="datepicker" name = "BillingDate" placeholder="Select Purchase date"/>
 					            <span class="input-group-addon">
 						            <span class="glyphicon glyphicon-calendar">
 
