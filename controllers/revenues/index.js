@@ -2,8 +2,8 @@
 
 
 var IndexModel = require('../../models/index');
-var cashAdvanceInfo = require('../../models/cashAdvanceRequestModel');
-var cashAdvanceModel = cashAdvanceInfo.cashAdvanceRequestModel();
+var revenueInfo = require('../../models/revenueModel');
+var revenueModel = revenueInfo.revenueModel();
 
 
 module.exports = function (router) {
@@ -17,18 +17,20 @@ module.exports = function (router) {
 
     });
 
-    router.post('/', function (req, res) {
-        var cashAdvance = new cashAdvanceModel(cashAdvanceInfo.fillCashAdvanceData(req));
+    router.post('/updateRevenue', function (req, res) {
+//        var cashAdvance = new revenueModel(revenueInfo.somefunction(req));
+//
+//        cashAdvance.save(function (err, result) {
+//            if (err) {
+//                console.log(err);
+//                res.redirect('/');
+//            }
+//            else {
+//                console.log(result);
+//                res.redirect('/abc');
+//            }
+//        });
 
-        cashAdvance.save(function (err, result) {
-            if (err) {
-                console.log(err);
-                res.redirect('/');
-            }
-            else {
-                console.log(result);
-                res.redirect('/abc');
-            }
-        });
+        console.log("request recieved");
     });
 };

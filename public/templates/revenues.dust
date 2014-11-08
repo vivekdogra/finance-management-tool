@@ -73,30 +73,33 @@
 
 <script>
     $(document).ready(function(){
+        var initialRows;
         var i=1;
         $("#add_row").click(function(){
-            $('#addr'+i).html("<td><input name='source"+i+"' type='text' placeholder='Source' class='form-control input-md' /></td><td><input name='date"+i+"' id='datepicker' type='text' placeholder='Date' class='form-control input-md'  /> </td><td><input  name='project"+i+"' type='text' placeholder='Project'  class='form-control input-md'></td><td><input  name='chapter"+i+"' type='text' placeholder='Chapter'  class='form-control input-md'></td><td><input  name='amount"+i+"' type='text' placeholder='Amount'  class='form-control input-md'></td><td><input  name='donorDetails"+i+"' type='text' placeholder='Donor Details'  class='form-control input-md'></td>");
+            $('#revenue'+i).html("<td><input name='source"+i+"' type='text' placeholder='Source' class='form-control input-md' required/></td><td><input name='date"+i+"' id='datepicker' type='date' placeholder='Date' class='form-control input-md' required /> </td><td><input  name='project"+i+"' type='text' placeholder='Project'  class='form-control input-md' required></td><td><input  name='chapter"+i+"' type='text' placeholder='Chapter'  class='form-control input-md' required></td><td><input  name='amount"+i+"' type='text' placeholder='Amount'  class='form-control input-md' required></td><td><input  name='donorDetails"+i+"' type='text' placeholder='Donor Details'  class='form-control input-md' required></td>");
 
-            $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+            $('#tab_logic').append('<tr id="revenue'+(i+1)+'"></tr>');
+            $("#update_row").removeClass('disabled');
             i++;
         });
-        $("#update_row").click(function(){
-            if(i>1){
-                $("#addr"+(i-1)).html('');
-                i--;
-            }
+        $("#update_row").click(function(event){
+            $("#update_row").addClass('disabled');
+            var data = [];
+
+            $.ajax({
+                url: '/revenues/updateRevenue',
+                dataType: 'html',
+                type:'post',
+                date: data,
+                success: function() {
+                    alert("hello");
+                }
+            });
+            event.preventDefault();
+            event.stopPropagation();
         });
     });
 </script>
-<script>
-
-    document.ready(function(){
-        $(function(){
-            $("datepicker").datepicker();
-        });
-    });
-</script>
-
 
 <div class="container" style="margin-left: 300px; padding-top: 50px">
     <h2 class="text-center">Add a Source of Revenue</h2>
@@ -128,12 +131,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr id='addr0'>
+                <tr id='revenue0'>
                     <td>
                         <input type="text" name='source'  placeholder='Source' class="form-control" disabled/>
                     </td>
                     <td>
-                        <input type="text" name='date' id="datepicker" placeholder='Date' class="form-control"/>
+                        <input type="text" name='date' id="datepicker" placeholder='Date' class="form-control" disabled/>
                     </td>
                     <td>
                         <input type="text" name='project' placeholder='Project' class="form-control" disabled/>
@@ -148,11 +151,11 @@
                         <input type="text" name='donorDetails' placeholder='Donor Details' class="form-control" disabled/>
                     </td>
                 </tr>
-                <tr id='addr1'></tr>
+                <tr id='revenue1'></tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <a id="add_row" class="btn btn-default pull-left">Add Source</a><a id='update_row' class="pull-right btn btn-default">Update</a>
+    <a id="add_row" class="btn btn-default pull-left">Add Source</a><a id='update_row' class="pull-right btn btn-default disabled">Update</a>
 </div>
 </body>
