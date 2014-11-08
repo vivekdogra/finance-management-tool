@@ -38,7 +38,10 @@ var billingSchema = mongoose.Schema({
         type:String
     },
     timeCreated : {
-        type:String
+        type:Date,
+        default: new Date()
+
+
     },
     status : {
         type:String,
