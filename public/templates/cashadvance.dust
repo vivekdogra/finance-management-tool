@@ -1,93 +1,15 @@
 {>"layouts/master" /}
 
-<body>
+{<body}
 
-<div class="nav-side-menu">
-    <div class="brand">Brand Logo</div>
-    <i class="fa fa-bars fa-3x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-
-    <div class="menu-list">
-
-
-        <ul id="menu-content" class="menu-content collapse out">
-            <li>
-                <a href="/submitbills">
-                    <i class="fa fa-dashboard fa-lg"></i> Submit a Bill
-                </a>
-            </li>
-            <li>
-                <a href="/cashadvance">
-                    <i class="fa fa-dashboard fa-lg"></i> Cash Advance
-                </a>
-            </li>
-            <li>
-                <a href="/cashinhand">
-                    <i class="fa fa-dashboard fa-lg"></i> Cash In Hand
-                </a>
-            </li>
-            <li>
-                <a href="/mybills">
-                    <i class="fa fa-dashboard fa-lg"></i> My Bills
-                </a>
-            </li>
-            <li>
-                <a href="/revenues">
-                    <i class="fa fa-dashboard fa-lg"></i> Revenues
-                </a>
-            </li>
-            <li>
-                <a href="/budgetProposal">
-                    <i class="fa fa-dashboard fa-lg"></i> Budget Proposal
-                </a>
-            </li>
-            <li>
-                <a href="/balancesheet">
-                    <i class="fa fa-dashboard fa-lg"></i> Balance Sheet
-                </a>
-            </li>
-            <li>
-                <a href="/searchpage">
-                    <i class="fa fa-dashboard fa-lg"></i> Search
-                </a>
-            </li>
-
-            <li data-toggle="collapse" data-target="#products" class="collapsed">
-                <a href="#"><i class="fa fa-dashboard fa-lg"></i> Approvals <span class="arrow"></span></a>
-            </li>
-            <ul class="sub-menu collapse out" id="products">
-                <li>
-                    <a href="approvebills"><i class="fa fa-lg"></i> Bills <span></span></a>
-                </li>
-                <li>
-                    <a href="approvebudget"><i class="fa fa-lg"></i> Budget <span></span></a>
-                </li>
-            </ul>
-            <li>
-                <a href="/fundsallocated">
-                    <i class="fa fa-dashboard fa-lg"></i> Funds Allocated
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-
-
-<div class="container vertical-center">
-    <form role="form" method="POST" action="/cashadvance" enctype="multipart/form-data">
-        <h2 style="margin-left: 200px"><span class="label label-success ">Request Cash Advance</span></h2>
-        <br/>
-        <br/>
-        <br/>
-        <div class="col-md-6">
-            <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required
-                Field</strong></div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <label for="ChapterName">Chapter</label>
-                </div>
-
-                <div class="col-md-8">
-                    <div class="input-group">
+<div class="container form-well">
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>  Request Cash Advance</strong></div>
+        <div class="panel-body">
+            <form class="form-horizontal" role="form" method="POST" action="/cashadvance" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="chapterName" class="col-sm-2 control-label" id="req">Chapter</label>
+                    <div class="col-sm-10">
                         <select class="form-control" name="ChapterName" id="ChapterName">
                             <option value="one">One</option>
                             <option value="two">Two</option>
@@ -95,70 +17,40 @@
                             <option value="four">Four</option>
                             <option value="five">Five</option>
                         </select>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-
-            <div class="form-group">
-                <div class="col-md-4">
-                    <label for="ProjectName">Project</label>
-                </div>
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <select class="form-control" name="ProjectName" id="ProjectName">
+                <div class="form-group">
+                    <label for="projectName" class="col-sm-2 control-label" id="req">Project</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="projectName" id="projectName">
                             <option value="one">One</option>
                             <option value="two">Two</option>
                             <option value="three">Three</option>
                             <option value="four">Four</option>
                             <option value="five">Five</option>
                         </select>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
-            </div>
-            <br/>
-            <br/>
-
-            <div class="form-group">
-                <div class="col-md-4">
-                    <label for="Purpose">Purpose</label>
-                </div>
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="Purpose" name="Purpose"
-                               placeholder="Enter comma separated values" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                <div class="form-group">
+                    <label for="purpose" class="col-sm-2 control-label" id="req">Purpose</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="purpose" placeholder="Enter comma separated values">
                     </div>
                 </div>
-            </div>
-
-            <br/>
-            <br/>
-
-            <div class="form-group">
-                <div class="col-md-4">
-                    <label for="Amount">Amount</label>
-                </div>
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="Amount" name="Amount"
-                               placeholder="Enter Amount" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                <div class="form-group">
+                    <label for="amount" class="col-sm-2 control-label" id="req">Amount</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="amount" placeholder="Amount">
                     </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success pull-right">Submit</button>
+                    </div>
+                </div>
+            </form>
 
-            <br/>
-            <br/>
-
-            <input type="hidden" name="_crsf" value="{_csrf}"/>
-            <input type="submit" name="submit" id="submit" value="Submit"
-                   class="btn btn-info" style="margin-left: 248px">
         </div>
-    </form>
+    </div>
 </div>
-</body>
+{/body}

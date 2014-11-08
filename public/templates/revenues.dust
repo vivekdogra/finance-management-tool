@@ -1,75 +1,8 @@
 {>"layouts/master" /}
 
-<body>
-
-<div class="nav-side-menu">
-    <div class="brand">Brand Logo</div>
-    <i class="fa fa-bars fa-3x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-
-    <div class="menu-list">
+{<body}
 
 
-        <ul id="menu-content" class="menu-content collapse out">
-            <li>
-                <a href="/submitbills">
-                    <i class="fa fa-dashboard fa-lg"></i> Submit a Bill
-                </a>
-            </li>
-            <li>
-                <a href="/cashadvance">
-                    <i class="fa fa-dashboard fa-lg"></i> Cash Advance
-                </a>
-            </li>
-            <li>
-                <a href="/cashinhand">
-                    <i class="fa fa-dashboard fa-lg"></i> Cash In Hand
-                </a>
-            </li>
-            <li>
-                <a href="/mybills">
-                    <i class="fa fa-dashboard fa-lg"></i> My Bills
-                </a>
-            </li>
-            <li>
-                <a href="/revenues">
-                    <i class="fa fa-dashboard fa-lg"></i> Revenues
-                </a>
-            </li>
-            <li>
-                <a href="/budgetProposal">
-                    <i class="fa fa-dashboard fa-lg"></i> Budget Proposal
-                </a>
-            </li>
-            <li>
-                <a href="/balancesheet">
-                    <i class="fa fa-dashboard fa-lg"></i> Balance Sheet
-                </a>
-            </li>
-            <li>
-                <a href="/searchpage">
-                    <i class="fa fa-dashboard fa-lg"></i> Search
-                </a>
-            </li>
-
-            <li data-toggle="collapse" data-target="#products" class="collapsed">
-                <a href="#"><i class="fa fa-dashboard fa-lg"></i> Approvals <span class="arrow"></span></a>
-            </li>
-            <ul class="sub-menu collapse out" id="products">
-                <li>
-                    <a href="approvebills"><i class="fa fa-lg"></i> Bills <span></span></a>
-                </li>
-                <li>
-                    <a href="approvebudget"><i class="fa fa-lg"></i> Budget <span></span></a>
-                </li>
-            </ul>
-            <li>
-                <a href="/fundsallocated">
-                    <i class="fa fa-dashboard fa-lg"></i> Funds Allocated
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
 
 <script>
     $(document).ready(function(){
@@ -101,7 +34,7 @@
     });
 </script>
 
-<div class="container" style="margin-left: 300px; padding-top: 50px">
+<div class="container">
     <h2 class="text-center">Add a Source of Revenue</h2>
     <br/>
     <br/>
@@ -158,4 +91,4 @@
     </div>
     <a id="add_row" class="btn btn-default pull-left">Add Source</a><a id='update_row' class="pull-right btn btn-default disabled">Update</a>
 </div>
-</body>
+{/body}
