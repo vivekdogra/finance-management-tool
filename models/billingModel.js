@@ -31,8 +31,9 @@ var billingSchema = mongoose.Schema({
     billNo : {
         type:Number
     },
-    location : {
-        type:String
+    purpose : {
+        type:String,
+        default: "None"
     },
     imageURI : {
         type:String
@@ -40,8 +41,6 @@ var billingSchema = mongoose.Schema({
     timeCreated : {
         type:Date,
         default: new Date()
-
-
     },
     status : {
         type:String,
@@ -50,8 +49,23 @@ var billingSchema = mongoose.Schema({
     }
 });
 
-exports.projectModel = function(){
-    return mongoose.model('billing', billingSchema);
+var fillBillingData = function (req) {
+    var billing = {};
+    billing.userId     = "123";
+    billing.chapterId  = "123";
+    billing.projectId   = "123";
+    billing.billingDate    = req.BillingDate;
+    billing.shopName = req.ShopName;
+    billing.amount    = req.Amount;
+    billing.billNo= req.BillNumber;
+    billing.purpose= req.Purpose;
+    billing.imageURI= __dirname+ "/../uploads/" + req.BillNumber+".jpg";
+
+    return billing;
 };
 
+exports.billingModel = function(){
+    return mongoose.model('billingInfo', billingSchema);
+};
 
+module.exports.fillBillingData = fillBillingData;
