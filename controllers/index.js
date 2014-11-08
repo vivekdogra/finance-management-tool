@@ -11,7 +11,7 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
-        res.render('submitbill', model);
+        res.render('login', model);
     });
 
     router.post('/submitbills', function (req, res) {
