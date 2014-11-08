@@ -28,6 +28,20 @@ var cashAdvanceRequestSchema = mongoose.Schema({
     }
 });
 
+var fillCashAdvanceData = function (req) {
+    var cashAdvance = {};
+    cashAdvance.userId     = "123";
+    cashAdvance.chapterName  = req.param('ChapterName');
+    cashAdvance.projectName   = req.param('ProjectName');
+    cashAdvance.amount    = req.param('Amount');
+    cashAdvance.purpose= req.param('Purpose');
+
+    return cashAdvance;
+};
+
+
 exports.cashAdvanceRequestModel = function(){
     return mongoose.model('cashAdvance', cashAdvanceRequestSchema);
 };
+
+module.exports.fillCashAdvanceData = fillCashAdvanceData;

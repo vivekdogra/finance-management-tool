@@ -73,8 +73,8 @@
 
 
 <div class="container vertical-center">
-    <form role="form" method="POST" action="/submitbills" enctype="multipart/form-data">
-        <h2 style="margin-left: 200px"><span class="label label-success ">Submit a Bill</span></h2>
+    <form role="form" method="POST" action="/cashadvance" enctype="multipart/form-data">
+        <h2 style="margin-left: 200px"><span class="label label-success ">Request Cash Advance</span></h2>
         <br/>
         <br/>
         <br/>
@@ -125,48 +125,12 @@
 
             <div class="form-group">
                 <div class="col-md-4">
-                    <label for="DateOfPurchase">Date of Purchase</label>
-                </div>
-                <div class="col-md-8">
-
-                    <div class='input-group date' id='datetimepicker5'>
-                        <input type='text' class="form-control" id="datepicker" name="BillingDate"
-                               placeholder="Select Purchase date"/>
-					            <span class="input-group-addon">
-						            <span class="glyphicon glyphicon-calendar">
-
-						            </span>
-					            </span>
-                    </div>
-                </div>
-            </div>
-            <br/>
-            <br/>
-
-            <div class="form-group">
-                <div class="col-md-4">
                     <label for="Purpose">Purpose</label>
                 </div>
                 <div class="col-md-8">
                     <div class="input-group">
                         <input type="text" class="form-control" id="Purpose" name="Purpose"
                                placeholder="Enter comma separated values" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-            </div>
-
-            <br/>
-            <br/>
-
-            <div class="form-group">
-                <div class="col-md-4">
-                    <label for="ShopName">Shop Name</label>
-                </div>
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="ShopName" name="ShopName"
-                               placeholder="Enter Shop Name" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -191,37 +155,6 @@
             <br/>
             <br/>
 
-            <div class="form-group">
-                <div class="col-md-4">
-                    <label for="BillNumber">Bill Number</label>
-                </div>
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="BillNumber" name="BillNumber"
-                               placeholder="Enter bill number" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-            </div>
-
-            <br/>
-            <br/>
-
-            <div class="form-group">
-                <div class="col-md-4">
-                    <label for="BillNumber">Upload Bill</label>
-                </div>
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="file" class="form-control" id="billfile" name="billfile"
-                               placeholder="Enter bill number" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-file"></span></span>
-                    </div>
-                </div>
-            </div>
-
-            <br/>
-            <br/>
             <input type="hidden" name="_crsf" value="{_csrf}"/>
             <input type="submit" name="submit" id="submit" value="Submit"
                    class="btn btn-info" style="margin-left: 248px">

@@ -2,6 +2,9 @@
 
 
 var IndexModel = require('../models/index');
+var fs = require('fs');
+var billingInfo = require('../models/billingModel');
+var billingModel = billingInfo.billingModel();
 
 
 module.exports = function (router) {
@@ -11,12 +14,24 @@ module.exports = function (router) {
 
     router.get('/', function (req, res) {
         
-        res.render('login', model);
+        res.render('submitbill', model);
         
     });
 
+    router.get('/sidemenu', function (req, res) {
+
+        res.render('sidemenu', model);
+
+    });
+
+    router.get('/submitbills', function (req, res) {
+
+        res.render('submitbill', model);
+
+    });
+
+
     router.post('/submitbills', function (req, res) {
-        var billingModel = billingInfo.billingModel();
         var billing = new billingModel(billingInfo.fillBillingData(req));
 
         fs.readFile(req.files.billfile.path, function (err, data) {

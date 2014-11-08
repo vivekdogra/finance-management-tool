@@ -1,0 +1,147 @@
+{>"layouts/master" /}
+
+<body>
+
+<div class="nav-side-menu">
+    <div class="brand">Brand Logo</div>
+    <i class="fa fa-bars fa-3x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+    <div class="menu-list">
+
+
+        <ul id="menu-content" class="menu-content collapse out">
+            <li>
+                <a href="/submitbills">
+                    <i class="fa fa-dashboard fa-lg"></i> Submit a Bill
+                </a>
+            </li>
+            <li>
+                <a href="/cashadvance">
+                    <i class="fa fa-dashboard fa-lg"></i> Cash Advance
+                </a>
+            </li>
+            <li>
+                <a href="/cashinhand">
+                    <i class="fa fa-dashboard fa-lg"></i> Cash In Hand
+                </a>
+            </li>
+            <li>
+                <a href="/mybills">
+                    <i class="fa fa-dashboard fa-lg"></i> My Bills
+                </a>
+            </li>
+            <li>
+                <a href="/revenues">
+                    <i class="fa fa-dashboard fa-lg"></i> Revenues
+                </a>
+            </li>
+            <li>
+                <a href="/budgetProposal">
+                    <i class="fa fa-dashboard fa-lg"></i> Budget Proposal
+                </a>
+            </li>
+            <li>
+                <a href="/balancesheet">
+                    <i class="fa fa-dashboard fa-lg"></i> Balance Sheet
+                </a>
+            </li>
+            <li>
+                <a href="/searchpage">
+                    <i class="fa fa-dashboard fa-lg"></i> Search
+                </a>
+            </li>
+
+            <li data-toggle="collapse" data-target="#products" class="collapsed">
+                <a href="#"><i class="fa fa-dashboard fa-lg"></i> Approvals <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse out" id="products">
+                <li>
+                    <a href="approvebills"><i class="fa fa-lg"></i> Bills <span></span></a>
+                </li>
+                <li>
+                    <a href="approvebudget"><i class="fa fa-lg"></i> Budget <span></span></a>
+                </li>
+            </ul>
+            <li>
+                <a href="/fundsallocated">
+                    <i class="fa fa-dashboard fa-lg"></i> Funds Allocated
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        var i=1;
+        $("#add_row").click(function(){
+            $('#addr'+i).html("<td><input name='source"+i+"' type='text' placeholder='Name' class='form-control input-md' /></td><td><input name='source"+i+"' type='text' placeholder='Name' class='form-control input-md'  /> </td><td><input  name='mail"+i+"' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile"+i+"' type='text' placeholder='Mobile'  class='form-control input-md'></td>");
+
+            $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+            i++;
+        });
+        $("#delete_row").click(function(){
+            if(i>1){
+                $("#addr"+(i-1)).html('');
+                i--;
+            }
+        });
+
+    });
+</script>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table table-bordered table-hover" id="tab_logic">
+                <thead>
+                <tr >
+                    <th class="text-center">
+                        Source
+                    </th>
+                    <th class="text-center">
+                        Date
+                    </th>
+                    <th class="text-center">
+                        Project
+                    </th>
+                    <th class="text-center">
+                        Chapter
+                    </th>
+                    <th class="text-center">
+                        Amount
+                    </th>
+                    <th class="text-center">
+                        Donor Details
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr id='addr0'>
+                    <td>
+                        <input type="text" name='source'  placeholder='Source' class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" name='date'  placeholder='Date' class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" name='project' placeholder='Project' class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" name='chapter' placeholder='Chapter' class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" name='amount' placeholder='Amount' class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" name='donorDetails' placeholder='Donor Details' class="form-control"/>
+                    </td>
+                </tr>
+                <tr id='addr1'></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a id="add_row" class="btn btn-default pull-left">Add Row</a><a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+</div>
+</body>

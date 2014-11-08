@@ -1,13 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>{+title /}</title>
+    <meta charset="utf-8">
+    <title>Responsive Navigation Menu - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <style type="text/css">
+        .nav-side-menu {
+            font-family: verdana;
+            font-size: 12px;
+            font-weight: 200;
+            background-color: #364252;
+            position: absolute;
+            width: 200px;
+            height: 100%;
+            color: #ffffff;
+        }
+
+        .nav-side-menu .brand {
+            background-color: #2c3643;
+            line-height: 40px;
+            display: block;
+            text-align: center;
+        }
+
+        .nav-side-menu .toggle-btn {
+            display: none;
+        }
+
+        .nav-side-menu ul,
+        .nav-side-menu li {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+            line-height: 35px;
+            cursor: pointer;
+        }
+
+        .nav-side-menu ul .collapsed .arrow:before,
+        .nav-side-menu li .collapsed .arrow:before {
+            font-family: FontAwesome;
+            content: "\f053";
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+            vertical-align: middle;
+            float: right;
+        }
+
+        .nav-side-menu ul :not(collapsed) .arrow:before,
+        .nav-side-menu li :not(collapsed) .arrow:before {
+            font-family: FontAwesome;
+            content: "\f078";
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+            vertical-align: middle;
+            float: right;
+        }
+
+        .nav-side-menu ul .active,
+        .nav-side-menu li .active {
+            border-left: 3px solid #44b6ae;
+            background-color: #5e7390;
+        }
+
+        .nav-side-menu ul .sub-menu li.active,
+        .nav-side-menu li .sub-menu li.active {
+            color: #1AAE98;
+        }
+
+        .nav-side-menu ul .sub-menu li,
+        .nav-side-menu li .sub-menu li {
+            background-color: #222933;
+            border: none;
+            line-height: 28px;
+            border-bottom: 1px solid #2c3643;
+            margin-left: 0px;
+        }
+
+        .nav-side-menu ul .sub-menu li:hover,
+        .nav-side-menu li .sub-menu li:hover {
+            background-color: #364252;
+        }
+
+        .nav-side-menu ul .sub-menu li:before,
+        .nav-side-menu li .sub-menu li:before {
+            font-family: FontAwesome;
+            content: "\f105";
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+            vertical-align: middle;
+        }
+
+        .nav-side-menu li {
+            padding-left: 0px;
+            border-left: 3px solid #364252;
+            border-bottom: 1px solid #2c3643;
+        }
+
+        .nav-side-menu li a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .nav-side-menu li a i {
+            padding-left: 10px;
+            width: 20px;
+            padding-right: 20px;
+        }
+
+        .nav-side-menu li:hover {
+            border-left: 3px solid #FFF;
+            background-color: #5e7390;
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -o-transition: all 1s ease;
+            -ms-transition: all 1s ease;
+            transition: all 1s ease;
+        }
+
+        @media (max-width: 767px) {
+            .nav-side-menu {
+                position: relative;
+                width: 100%;
+            }
+
+            .nav-side-menu .toggle-btn {
+                display: block;
+                cursor: pointer;
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                z-index: 10 !important;
+            }
+
+            .brand {
+                text-align: left !important;
+                font-size: 20px;
+                padding-left: 10px;
+                line-height: 50px !important;
+            }
+        }
+
+        @media (min-width: 767px) {
+            .nav-side-menu .menu-list .menu-content {
+                display: block;
+            }
+
+            .container {
+                width: 1130px;
+                margin-left: 200px;
+            }
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .container {
+
+            text-align: justify;
+        }
+
+        .vertical-center {
+            min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+            min-height: 100vh; /* These two lines are counted as one :-)       */
+
+            display: flex;
+            align-items: center;
+            margin-left: 600px;
+        }
+
+    </style>
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function () {
+        };
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css) {
+            if (css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="' + css + '" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $(document).ready(function () {
+            var iframe_height = parseInt($('html').height());
+            window.parent.postMessage(iframe_height, 'http://bootsnipp.com');
+        });
+    </script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 <body>
-<div id="wrapper">
     {+body /}
-</div>
-<script data-main="/js/app" src="/components/requirejs/require.js"></script>
 </body>
 </html>
