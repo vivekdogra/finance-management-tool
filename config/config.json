@@ -1,4 +1,12 @@
 {
+    "databaseConfig": {
+        "host": "localhost",
+        "database": "passportTest"
+    },
+
+    "bcrypt": {
+        "difficulty": 8
+    },
 
     "express": {
         "view cache": false,
