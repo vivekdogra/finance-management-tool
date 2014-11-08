@@ -4,7 +4,7 @@
 var kraken = require('kraken-js'),
     app = require('express')(),
     options = require('./lib/spec')(app),
-//    userLib = require('./lib/user')(),
+    userLib = require('./lib/userHelper')(),
     port = process.env.PORT || 8005;
 
 
