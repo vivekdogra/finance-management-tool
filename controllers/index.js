@@ -2,8 +2,6 @@
 
 
 var IndexModel = require('../models/index');
-var fs = require('fs');
-var billingInfo = require('../models/billingModel');
 
 
 module.exports = function (router) {
@@ -12,7 +10,9 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
+        
         res.render('login', model);
+        
     });
 
     router.post('/submitbills', function (req, res) {
@@ -42,4 +42,9 @@ module.exports = function (router) {
     });
 
 
+    router.post('/register', function (req, res){
+
+
+
+    });
 };

@@ -1,7 +1,17 @@
 {
+    //add the user to the response object
+    "injectUser": {
+        "enabled": true,
+        "priority": 112,
+        "module": {
+            "name":"path:./lib/auth",
+            "method": "injectUser"
+        }
+    },
+
     "databaseConfig": {
         "host": "localhost",
-        "database": "passportTest"
+        "database": "fmtdb"
     },
 
     "bcrypt": {
