@@ -31,6 +31,19 @@ var revenueSchema = mongoose.Schema({
     }
 });
 
-exports.cashAdvanceRequestModel = function(){
-    return mongoose.model('cashAdvance', cashAdvanceRequestSchema);
+var revenueData = function (req) {
+    var revenueData = {};
+    revenueData.userId     = "123";
+    revenueData.chapterName  = req.param('ChapterName');
+    revenueData.projectName   = req.param('ProjectName');
+    revenueData.amount    = req.param('Amount');
+    revenueData.purpose= req.param('Purpose');
+
+    return revenueData;
 };
+
+exports.revenueModel = function(){
+    return mongoose.model('revenueInfo', revenueSchema);
+};
+
+module.exports.revenueData = revenueData;
