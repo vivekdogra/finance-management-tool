@@ -6,6 +6,7 @@
         $(document).ready(function () {
             $(document).on("click", 'button#btn-searchresult', function (e) {
                 e.preventDefault();
+                console.log($('form.searchform').serialize());
                 $.ajax({
                     url: '/searchresults/query',
                     type: 'post',

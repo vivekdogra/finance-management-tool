@@ -18,9 +18,6 @@ var revenueSchema = mongoose.Schema({
     projectName :{
         type:String
     },
-    purpose :{
-        type:String
-    },
     amount: {
         type:String,
         required: true
@@ -33,11 +30,12 @@ var revenueSchema = mongoose.Schema({
 
 var revenueData = function (req) {
     var revenueData = {};
-    revenueData.userId     = "123";
-    revenueData.chapterName  = req.param('ChapterName');
-    revenueData.projectName   = req.param('ProjectName');
-    revenueData.amount    = req.param('Amount');
-    revenueData.purpose= req.param('Purpose');
+    revenueData.source  = req.param('source');
+    revenueData.date   = req.param('date');
+    revenueData.chapterName    = req.param('chapter');
+    revenueData.projectName= req.param('project');
+    revenueData.amount= req.param('amount');
+    revenueData.donorDetails= req.param('donordetails');
 
     return revenueData;
 };
