@@ -19,10 +19,15 @@
                         var searchtable = $('#resulttablebody  tr:last');
 
 
-                        $.each(results, function(i)
-                        {
-                            searchtable.after('<tr><td>'+(results.length - i)+'</td><td>'+results[i].billNo+'</td><td>'+results[i].billingDate+'</td><td>'+results[i].purpose+'</td><td>'+results[i].projectName+'</td><td>'+results[i].amount+'</td></tr>');
-                        });
+                        if (results.length === 0) {
+                            $('#nodatafound').removeClass('hidden');
+                        } else {
+                            $('#nodatafound').addClass('hidden');
+
+                            $.each(results, function (i) {
+                                searchtable.after('<tr><td>' + (results.length - i) + '</td><td>' + results[i].billNo + '</td><td>' + results[i].billingDate + '</td><td>' + results[i].purpose + '</td><td>' + results[i].projectName + '</td><td>' + results[i].amount + '</td></tr>');
+                            });
+                        }
                     }
                 });
                 return false;
@@ -138,6 +143,7 @@
                         <tr></tr>
                         </tbody>
                     </table>
+                    <h2 class="text-center hidden" id="nodatafound">No data found</h2>
                 </div>
             </div>
         </div>
