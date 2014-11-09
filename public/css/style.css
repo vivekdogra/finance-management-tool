@@ -203,3 +203,16 @@ body {
 .unauthorized{
     margin-left:300px;
 }
+.nav>li.disabled>a:hover, .nav>li.disabled>a:focus {
+    color: #777;
+    text-decoration: none;
+    cursor: not-allowed !important;
+    background-color: transparent;
+}
+
+li.disabled a.disabled{
+    color: #777;
+    text-decoration: none;
+    cursor: not-allowed !important;
+    background-color: transparent !important;
+}

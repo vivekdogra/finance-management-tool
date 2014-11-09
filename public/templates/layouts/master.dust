@@ -57,20 +57,20 @@
         {?accessArray}
             {#accessArray}
                 {?children}
-                    <li data-toggle="collapse" data-target="#products" class="collapsed">
+                    <li data-toggle="collapse" data-target="#products" class="collapsed {.status}">
                         <a href="#"><i class="fa fa-dashboard fa-lg"></i> {.text} <span class="arrow"></span></a>
                     </li>
 
                     <ul class="sub-menu collapse out" id="products">
                         {#children}
-                            <li>
-                                <a href="{.link}"><i class="fa fa-lg"></i> {.text}<span></span></a>
+                            <li class="{.status}">
+                                <a href="{.link}"> <i class="fa fa-lg"></i> {.text}<span></span></a>
                             </li>
                        {/children}
                     </ul>
                 {:else}
-                    <li>
-                        <a href="{.link}"><i class="fa fa-dashboard fa-lg"></i> {.text} <span></span></a>
+                    <li class="{.status}">
+                        <a href="{.link}" class="{.status}"><i class="fa fa-dashboard fa-lg"></i> {.text} <span></span></a>
                     </li>
                 {/children}
 
