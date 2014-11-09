@@ -31,6 +31,12 @@
                                 {#bills}
                                 <tr><td>1</td><td>{.billNo}</td><td>{.billingDate}</td><td>{.purpose}</td><td>{.projectName}</td><td>{.amount}</td><td>{.status}</td><td><button type="submit" class="btn btn-info pull-right disabled">Edit</button></td></tr>
                                 {/bills}
+                            {:else}
+                                <tr>
+                                    <td colspan="8">
+                                        <h2 class="text-center" id="nodatafound">No data found</h2>
+                                    </td>
+                                </tr>
                             {/bills}
                         <tr></tr>
                         </tbody>
