@@ -33,8 +33,8 @@ module.exports = function (router) {
     router.post('/login', function (req, res) {
 
         passport.authenticate('local', {
-            successRedirect: req.session.goingTo || '/user',
-            failureRedirect: '/',
+            successRedirect: '/user',
+            failureRedirect: '/login',
             failureFlash: true
         })(req, res);
     });
