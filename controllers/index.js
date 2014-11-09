@@ -5,8 +5,6 @@ var IndexModel = require('../models/index');
 var passport   = require('passport');
 var fs = require('fs');
 var billingInfo = require('../models/billingModel');
-var billingModel = billingInfo.billingModel();
-
 
 module.exports = function (router) {
 
@@ -55,9 +53,8 @@ module.exports = function (router) {
         var billing = new billingModel(billingInfo.fillBillingData(req));
 
         fs.readFile(req.files.billfile.path, function (err, data) {
-            var newPath = __dirname+ "/../uploads/" + req.param('BillNumber')+".jpg" ;
+            var newPath = __dirname+ "/../uploads/" + req.param('billNumber')+".jpg" ;
             fs.writeFile(newPath, data, function (err) {
-                res.redirect("/");
             });
         });
 
@@ -71,7 +68,7 @@ module.exports = function (router) {
             else
             {
                 console.log(result);
-                res.redirect('/abc');
+                res.redirect('/user');
             }
         });
     });

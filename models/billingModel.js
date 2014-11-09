@@ -18,7 +18,7 @@ var billingSchema = mongoose.Schema({
         required: true
     },
     billingDate :{
-        type:String,
+        type:Date,
         required: true
     },
     shopName :{
@@ -29,7 +29,8 @@ var billingSchema = mongoose.Schema({
         required: true
     },
     billNo : {
-        type:Number
+        type:String,
+        required: true
     },
     purpose : {
         type:String,
@@ -51,15 +52,15 @@ var billingSchema = mongoose.Schema({
 
 var fillBillingData = function (req) {
     var billing = {};
-    billing.userId     = "123";
-    billing.chapterName  = req.param('ChapterName');
-    billing.projectName   = req.param('ProjectName');
-    billing.billingDate    = req.param('BillingDate');
-    billing.shopName = req.param('ShopName');
-    billing.amount    = req.param('Amount');
-    billing.billNo= req.param('BillNumber');
-    billing.purpose= req.param('Purpose');
-    billing.imageURI= __dirname+ "/../uploads/" + req.param('BillNumber') +".jpg";
+    billing.userId     = req.user.userName;
+    billing.chapterName  = req.param('chapterName');
+    billing.projectName   = req.param('projectName');
+    billing.billingDate    = req.param('billingDate');
+    billing.shopName = req.param('shopName');
+    billing.amount    = req.param('amount');
+    billing.billNo= req.param('billNumber');
+    billing.purpose= req.param('purpose');
+    billing.imageURI= __dirname+ "/../uploads/" + req.param('billNumber') +".jpg";
 
     return billing;
 };

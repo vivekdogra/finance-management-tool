@@ -1,0 +1,145 @@
+{>"layouts/master" /}
+
+{<body}
+
+    <script>
+        $(document).ready(function () {
+            $(document).on("click", 'button#btn-searchresult', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '/searchresults/query',
+                    type: 'post',
+                    dataType: 'json',
+                    data: $('form.searchform').serialize(),
+                    success: function (results) {
+                        console.log(results);
+
+                        $('#resulttablebody > tr').remove();
+                        $('<tr/>').appendTo($('#resulttablebody'));
+                        var searchtable = $('#resulttablebody  tr:last');
+
+
+                        $.each(results, function(i)
+                        {
+                            searchtable.after('<tr><td>'+(results.length - i)+'</td><td>'+results[i].billNo+'</td><td>'+results[i].billingDate+'</td><td>'+results[i].purpose+'</td><td>'+results[i].projectName+'</td><td>'+results[i].amount+'</td></tr>');
+                        });
+                    }
+                });
+                return false;
+            });
+
+            $(document).on("change", '.select-chapter', function () {
+                $('input').attr('disabled', true);
+                $('.select-project').attr('disabled', true);
+            });
+
+            $(document).on("change", '.select-project', function () {
+                $('input').attr('disabled', true);
+                $('.select-chapter').attr('disabled', true);
+            });
+
+            $(document).on("change", 'input', function () {
+                $('select').attr('disabled', true);
+            });
+
+            $(document).on("click", '#btn-changeselection', function () {
+                $("select").val([]);
+                $('.select-project').attr('disabled', false);
+                $('.select-chapter').attr('disabled', false);
+                $('input').attr('disabled', false);
+            });
+
+        });
+    </script>
+    <div class="container form-well">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong> Search by any one of the fields</strong></div>
+            <div class="panel-body">
+                <form class="form-horizontal searchform">
+                    <div class="form-group">
+                        <label for="chapterName" class="col-sm-2 control-label">Chapter</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control select-chapter" name="chapterName" id="chapterName">
+                                <option value=""></option>
+                                <option value="Pilani">Pilani</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectName" class="col-sm-2 control-label">Project</label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control select-project" name="projectName" id="projectName">
+                                <option value=""></option>
+                                <option value="SHG">SHG</option>
+                                <option value="HR">HR</option>
+                                <option value="SAP">SAP</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateOfPurchase" class="col-sm-2 control-label">Date Range</label>
+
+                        <div class="col-sm-10">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {!<label for="fromDate" class="col-sm-2 control-label" id="req">From</label>!}
+                                    {!<div class="col-sm-10">!}
+                                    <input type='date' class="form-control" name="fromDate"
+                                           placeholder="From"/>
+                                    {!</div>!}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {!<label for="toDate" class="col-sm-2 control-label" id="req">To</label>!}
+                                    <div class="col-sm-12">
+                                        <input type='date' class="form-control" name="toDate"
+                                               placeholder="To"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-info pull-left" id="btn-changeselection">Change Search
+                        </button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-success pull-right " id="btn-searchresult">Search</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading searchresults"><strong> Results:</strong></div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id='searched-results'>
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Bill Number</th>
+                            <th>Date</th>
+                            <th>Purpose</th>
+                            <th>Project</th>
+                            <th>Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody id="resulttablebody">
+                        <tr></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{/body}

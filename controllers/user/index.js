@@ -2,6 +2,7 @@
 
 
 var IndexModel = require('../../models/index');
+var billingInfo = require('../../models/billingModel');
 
 //var IndexModel = require('../models/index'),
 //    ProfileModel = require('../models/profile'),
@@ -11,14 +12,29 @@ var IndexModel = require('../../models/index');
 
 module.exports = function (router) {
 
-    var indexmodel = new IndexModel();
-//    var profilemodel = new ProfileModel();
-//    var adminmodel = new AdminModel();
+    var billingModel = billingInfo.billingModel();
 
+    var indexmodel = new IndexModel();
 
     router.get('/', function (req, res) {
         res.render('submitbill', indexmodel);
     });
+
+    router.get('/mybills', function (req, res) {
+        billingModel.find({'userId' : req.user.userName}, function(err, results){
+
+            if (err) {
+                logger.error('mongo err : ' + err);
+                res.redirect('/user');
+            }
+            else{
+                var mybills = {'bills':results};
+                res.render('billsinfo', mybills);
+            }
+
+        });
+    });
+
 
 
 //    router.get('/profile', function(req, res) {

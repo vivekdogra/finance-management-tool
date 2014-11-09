@@ -30,11 +30,11 @@ var cashAdvanceRequestSchema = mongoose.Schema({
 
 var fillCashAdvanceData = function (req) {
     var cashAdvance = {};
-    cashAdvance.userId     = "123";
-    cashAdvance.chapterName  = req.param('ChapterName');
-    cashAdvance.projectName   = req.param('ProjectName');
-    cashAdvance.amount    = req.param('Amount');
-    cashAdvance.purpose= req.param('Purpose');
+    cashAdvance.userId     = req.user.userName;
+    cashAdvance.chapterName  = req.param('chapterName');
+    cashAdvance.projectName   = req.param('projectName');
+    cashAdvance.amount    = req.param('amount');
+    cashAdvance.purpose= req.param('purpose');
 
     return cashAdvance;
 };

@@ -195,3 +195,7 @@ body {
 .panel-default>.panel-heading {
     background-color: hsla(185, 93%, 49%, 0.49) !important;
 }
+
+.panel-default>.panel-heading.searchresults {
+    background-color: hsla(103, 100%, 52%, 0.49) !important;
+}

@@ -5,16 +5,9 @@
     <title>Arthika</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <link href="../css/style.css" rel="stylesheet" />
 
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script>
-        $(function () {
-            $("#datepicker").datepicker();
-        });
-    </script>
+    <script src="../js/jquery-1.10.2.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <link href="../css/font-awesome.min.css" rel="stylesheet">
 
@@ -53,84 +46,114 @@
         {!</div>!}
     </nav>
 </div>
-{!<div class="container">!}
-    {!<div class="row col-md-12">!}
-        {!<div class="col=md-3">!}
-            <div class="nav-side-menu">
-                <div class="brand">Arthika</div>
-                <i class="fa fa-bars fa-3x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+<div class="nav-side-menu">
+<div class="brand">You're logged in as <strong>"{user.role}"</strong></div>
+<i class="fa fa-bars fa-3x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
-                <div class="menu-list">
+<div class="menu-list">
 
-                    <ul id="menu-content" class="menu-content collapse out">
-                        <li>
-                            <a href="/submitbills">
-                                <i class="fa fa-dashboard fa-lg"></i> Submit a Bill
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/cashadvance">
-                                <i class="fa fa-dashboard fa-lg"></i> Cash Advance
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/cashinhand">
-                                <i class="fa fa-dashboard fa-lg"></i> Cash In Hand
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/mybills">
-                                <i class="fa fa-dashboard fa-lg"></i> My Bills
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/revenues">
-                                <i class="fa fa-dashboard fa-lg"></i> Revenues
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/budgetProposal">
-                                <i class="fa fa-dashboard fa-lg"></i> Budget Proposal
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/balancesheet">
-                                <i class="fa fa-dashboard fa-lg"></i> Balance Sheet
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/searchpage">
-                                <i class="fa fa-dashboard fa-lg"></i> Search
-                            </a>
-                        </li>
+    <ul id="menu-content" class="menu-content collapse out">
 
-                        <li data-toggle="collapse" data-target="#products" class="collapsed">
-                            <a href="#"><i class="fa fa-dashboard fa-lg"></i> Approvals <span class="arrow"></span></a>
-                        </li>
-                        <ul class="sub-menu collapse out" id="products">
+        {?accessArray}
+            {#accessArray}
+                {?children}
+                    <li data-toggle="collapse" data-target="#products" class="collapsed">
+                        <a href="#"><i class="fa fa-dashboard fa-lg"></i> {.text} <span class="arrow"></span></a>
+                    </li>
+
+                    <ul class="sub-menu collapse out" id="products">
+                        {#children}
                             <li>
-                                <a href="approvebills"><i class="fa fa-lg"></i> Bills <span></span></a>
+                                <a href="{.link}"><i class="fa fa-lg"></i> {.text}<span></span></a>
                             </li>
-                            <li>
-                                <a href="approvebudget"><i class="fa fa-lg"></i> Budget <span></span></a>
-                            </li>
-                        </ul>
-                        <li>
-                            <a href="/fundsallocated">
-                                <i class="fa fa-dashboard fa-lg"></i> Funds Allocated
-                            </a>
-                        </li>
+                       {/children}
                     </ul>
-                </div>
-            </div>
-        {!</div>!}
-    {!</div>!}
+                {:else}
+                    <li>
+                        <a href="{.link}"><i class="fa fa-dashboard fa-lg"></i> {.text} <span></span></a>
+                    </li>
+                {/children}
 
+            {/accessArray}
+        {/accessArray}
 
+        {!<li data-toggle="collapse" data-target="#products" class="collapsed">!}
+            {!<a href="#"><i class="fa fa-dashboard fa-lg"></i> Approvals <span class="arrow"></span></a>!}
+        {!</li>!}
+        {!<ul class="sub-menu collapse out" id="products">!}
+            {!<li>!}
+                {!<a href="approvebills"><i class="fa fa-lg"></i> Bills <span></span></a>!}
+            {!</li>!}
+            {!<li>!}
+                {!<a href="approvebudget"><i class="fa fa-lg"></i> Budget <span></span></a>!}
+            {!</li>!}
+        {!</ul>!}
 
-{!</div>!}
+        {!<li>!}
+            {!<a href="/submitbills">!}
+                {!<i class="fa fa-dashboard fa-lg"></i> Submit a Bill!}
+            {!</a>!}
+        {!</li>!}
+        {!<li>!}
+            {!<a href="/submitbills">!}
+                {!<i class="fa fa-dashboard fa-lg"></i> Submit a Bill!}
+            {!</a>!}
+        {!</li>!}
+        {!<li>!}
+            {!<a href="/cashadvance">!}
+                {!<i class="fa fa-dashboard fa-lg"></i> Cash Advance!}
+            {!</a>!}
+        {!</li>!}
+        {!<li>!}
+            {!<a href="/cashinhand">!}
+                {!<i class="fa fa-dashboard fa-lg"></i> Cash In Hand!}
+            {!</a>!}
+        {!</li>!}
+        {!<li>!}
+            {!<a href="/mybills">!}
+                {!<i class="fa fa-dashboard fa-lg"></i> My Bills!}
+            {!</a>!}
+        {!</li>!}
+        {!<li>!}
+            {!<a href="/revenues">!}
+                {!<i class="fa fa-dashboard fa-lg"></i> Revenues!}
+            {!</a>!}
+        {!</li>!}
+        {!<li>!}
+            {!<a href="/budgetProposal">!}
+                {!<i class="fa fa-dashboard fa-lg"></i> Budget Proposal!}
+            {!</a>!}
+        {!</li>!}
+        {!<li>!}
+            {!<a href="/balancesheet">!}
+                {!<i class="fa fa-dashboard fa-lg"></i> Balance Sheet!}
+            {!</a>!}
+        {!</li>!}
+        {!<li>!}
+            {!<a href="/searchpage">!}
+                {!<i class="fa fa-dashboard fa-lg"></i> Search!}
+            {!</a>!}
+        {!</li>!}
 
-
+        {!<li data-toggle="collapse" data-target="#products" class="collapsed">!}
+            {!<a href="#"><i class="fa fa-dashboard fa-lg"></i> Approvals <span class="arrow"></span></a>!}
+        {!</li>!}
+        {!<ul class="sub-menu collapse out" id="products">!}
+            {!<li>!}
+                {!<a href="approvebills"><i class="fa fa-lg"></i> Bills <span></span></a>!}
+            {!</li>!}
+            {!<li>!}
+                {!<a href="approvebudget"><i class="fa fa-lg"></i> Budget <span></span></a>!}
+            {!</li>!}
+        {!</ul>!}
+        {!<li>!}
+            {!<a href="/fundsallocated">!}
+                {!<i class="fa fa-dashboard fa-lg"></i> Funds Allocated!}
+            {!</a>!}
+        {!</li>!}
+    </ul>
+    </div>
+</div>
 
     {+body /}
 <script>
