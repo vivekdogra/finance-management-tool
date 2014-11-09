@@ -4,91 +4,112 @@
 
 
 
-<script>
-    $(document).ready(function(){
-        var initialRows;
-        var i=1;
-        $("#add_row").click(function(){
-            $('#revenue'+i).html("<td><input name='source"+i+"' type='text' placeholder='Source' class='form-control input-md' required/></td><td><input name='date"+i+"' id='datepicker' type='date' placeholder='Date' class='form-control input-md' required /> </td><td><input  name='project"+i+"' type='text' placeholder='Project'  class='form-control input-md' required></td><td><input  name='chapter"+i+"' type='text' placeholder='Chapter'  class='form-control input-md' required></td><td><input  name='amount"+i+"' type='text' placeholder='Amount'  class='form-control input-md' required></td><td><input  name='donorDetails"+i+"' type='text' placeholder='Donor Details'  class='form-control input-md' required></td>");
+    <script>
+        $(document).ready(function () {
+            var initialRows;
+            var i = 1;
+            $("#add_row").click(function () {
+                $('#revenue' + i).html("<td><input name='source" + i + "' id='source" + i + "' type='text' placeholder='Source' class='form-control input-md' required/></td><td><input name='date" + i + "' id='date" + i + "' id='datepicker' type='date' placeholder='Date' class='form-control input-md' required /> </td><td><input  name='project" + i + "' id='project" + i + "' type='text' placeholder='Project'  class='form-control input-md' required></td><td><input  name='chapter" + i + "' id='chapter" + i + "' type='text' placeholder='Chapter'  class='form-control input-md' required></td><td><input name='amount" + i + "' id='amount" + i + "' type='text' placeholder='Amount'  class='form-control input-md' required></td><td><input  name='donordetails" + i + "' id='donordetails" + i + "' type='text' placeholder='Donor Details'  class='form-control input-md' required></td>");
 
-            $('#tab_logic').append('<tr id="revenue'+(i+1)+'"></tr>');
-            $("#update_row").removeClass('disabled');
-            i++;
-        });
-        $("#update_row").click(function(event){
-            $("#update_row").addClass('disabled');
-            var data = [];
-
-            $.ajax({
-                url: '/revenues/updateRevenue',
-                dataType: 'html',
-                type:'post',
-                date: data,
-                success: function() {
-                    alert("hello");
-                }
+                $('#tab_logic').append('<tr id="revenue' + (i + 1) + '"></tr>');
+                $("#update_row").removeClass('disabled');
+                i++;
             });
-            event.preventDefault();
-            event.stopPropagation();
-        });
-    });
-</script>
+            $("#update_row").click(function (event) {
+                $("#update_row").addClass('disabled');
+                var data = {};
 
-<div class="container">
-    <h2 class="text-center">Add a Source of Revenue</h2>
-    <br/>
-    <br/>
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <table class="table table-bordered table-hover" id="tab_logic">
-                <thead>
-                <tr >
-                    <th class="text-center">
-                        Source
-                    </th>
-                    <th class="text-center">
-                        Date
-                    </th>
-                    <th class="text-center">
-                        Project
-                    </th>
-                    <th class="text-center">
-                        Chapter
-                    </th>
-                    <th class="text-center">
-                        Amount
-                    </th>
-                    <th class="text-center">
-                        Donor Details
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr id='revenue0'>
-                    <td>
-                        <input type="text" name='source'  placeholder='Source' class="form-control" disabled/>
-                    </td>
-                    <td>
-                        <input type="text" name='date' id="datepicker" placeholder='Date' class="form-control" disabled/>
-                    </td>
-                    <td>
-                        <input type="text" name='project' placeholder='Project' class="form-control" disabled/>
-                    </td>
-                    <td>
-                        <input type="text" name='chapter' placeholder='Chapter' class="form-control" disabled/>
-                    </td>
-                    <td>
-                        <input type="text" name='amount' placeholder='Amount' class="form-control" disabled/>
-                    </td>
-                    <td>
-                        <input type="text" name='donorDetails' placeholder='Donor Details' class="form-control" disabled/>
-                    </td>
-                </tr>
-                <tr id='revenue1'></tr>
-                </tbody>
-            </table>
+                data.source = $('#source' + (i - 1)).val();
+                data.date = $('#date' + (i - 1)).val();
+                data.project = $('#project' + (i - 1)).val();
+                data.chapter = $('#chapter' + (i - 1)).val();
+                data.amount = $('#amount' + (i - 1)).val();
+                data.donordetails = $('#donordetails' + (i - 1)).val();
+                console.log(data);
+                $.ajax({
+                    url: '/revenues/updateRevenue',
+                    dataType: 'json',
+                    type: 'post',
+                    data: data,
+                    success: function () {
+                    }
+                });
+                event.preventDefault();
+                event.stopPropagation();
+            });
+        });
+    </script>
+
+    <div class="container">
+        <h2 class="text-center">Add a Source of Revenue</h2>
+        <br/>
+        <br/>
+
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <table class="table table-bordered table-hover" id="tab_logic">
+                    <thead>
+                    <tr>
+                        <th class="text-center">
+                            Source
+                        </th>
+                        <th class="text-center">
+                            Date
+                        </th>
+                        <th class="text-center">
+                            Project
+                        </th>
+                        <th class="text-center">
+                            Chapter
+                        </th>
+                        <th class="text-center">
+                            Amount
+                        </th>
+                        <th class="text-center">
+                            Donor Details
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {?revenues}
+                            {#revenues}
+                            <tr id='revenue0'>
+                                <td>
+                                    <input type="text" name='source' value="{.source}" placeholder='Source' class="form-control"
+                                           disabled/>
+                                </td>
+                                <td>
+                                    <input type="text" name='date' value="{.date}" id="datepicker" placeholder='Date'
+                                           class="form-control"
+                                           disabled/>
+                                </td>
+                                <td>
+                                    <input type="text" name='project' value="{.projectName}" placeholder='Project' class="form-control"
+                                           disabled/>
+                                </td>
+                                <td>
+                                    <input type="text" name='chapter' value="{.chapterName}" placeholder='Chapter' class="form-control"
+                                           disabled/>
+                                </td>
+                                <td>
+                                    <input type="text" name='amount' value="{.amount}" placeholder='Amount' class="form-control"
+                                           disabled/>
+                                </td>
+                                <td>
+                                    <input type="text" name='donorDetails' value="{.donorDetails}" placeholder='Donor Details'
+                                           class="form-control"
+                                           disabled/>
+                                </td>
+                            </tr>
+                            {/revenues}
+                        {:else}
+                        <tr id='revenue1'></tr>
+                        {/revenues}
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <a id="add_row" class="btn btn-default pull-left">Add Source</a><a id='update_row'
+                                                                           class="pull-right btn btn-default disabled">Update</a>
     </div>
-    <a id="add_row" class="btn btn-default pull-left">Add Source</a><a id='update_row' class="pull-right btn btn-default disabled">Update</a>
-</div>
 {/body}

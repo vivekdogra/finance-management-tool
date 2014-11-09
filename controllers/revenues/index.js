@@ -13,24 +13,35 @@ module.exports = function (router) {
 
     router.get('/', function (req, res) {
 
-        res.render('revenues', model);
+        revenueModel.find(function(err, results){
+
+            model.revenues = results;
+
+            if (err) {
+                logger.error('mongo err : ' + err);
+                res.redirect('/');
+            }
+            else{
+                res.render('revenues', model);
+            }
+
+        });
+
 
     });
 
     router.post('/updateRevenue', function (req, res) {
-//        var cashAdvance = new revenueModel(revenueInfo.somefunction(req));
-//
-//        cashAdvance.save(function (err, result) {
-//            if (err) {
-//                console.log(err);
-//                res.redirect('/');
-//            }
-//            else {
-//                console.log(result);
-//                res.redirect('/abc');
-//            }
-//        });
+        var revenue = new revenueModel(revenueInfo.revenueData(req));
 
-        console.log("request recieved");
+        revenue.save(function (err, result) {
+            if (err) {
+                console.log(err);
+                res.redirect('/');
+            }
+            else {
+                console.log(result);
+                res.send({'response':'ok'});
+            }
+        });
     });
 };

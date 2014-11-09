@@ -17,6 +17,7 @@ module.exports = function (router) {
     var indexmodel = new IndexModel();
 
     router.get('/', function (req, res) {
+
         res.render('submitbill', indexmodel);
     });
 
